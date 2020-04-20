@@ -1,0 +1,14 @@
+language: java
+sudo: false
+
+global:
+ - CODECOV_TOKEN="06d5b2c8-ccca-4e9d-85b8-34ac0f6cba44"
+ -
+before_install:
+
+ echo "export SENDGRID_API_KEY='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'" > sendgrid.env
+ echo "sendgrid.env" >> .gitignore
+ source ./sendgrid.env
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
